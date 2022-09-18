@@ -21,10 +21,10 @@ import guru.sfg.beer.order.service.domain.BeerOrder;
 import guru.sfg.beer.order.service.web.model.BeerOrderDto;
 import org.mapstruct.Mapper;
 
-@Mapper(uses = {DateMapper.class, BeerOrderLineMapper.class})
-public interface BeerOrderMapper {
+@Mapper(uses = {DateMapper.class, BeerOrderLineMapperImpl.class})
+public interface BeerOrderMapper
+{
+    BeerOrderDto toBeerOrderDto(BeerOrder beerOrder);
 
-    BeerOrderDto beerOrderToDto(BeerOrder beerOrder);
-
-    BeerOrder dtoToBeerOrder(BeerOrderDto dto);
+    BeerOrder toBeerOrder(BeerOrderDto dto);
 }
