@@ -15,9 +15,8 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package guru.sfg.beer.order.service.web.model;
+package guru.sfg.brewery.model;
 
-import guru.sfg.beer.order.service.web.dto.BeerOrderDto;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 

@@ -1,8 +1,8 @@
 package guru.sfg.beer.order.service.cases;
 
-import guru.sfg.beer.order.service.web.dto.BeerOrderDto;
-import guru.sfg.beer.order.service.web.dto.BeerOrderLineDto;
-import guru.sfg.beer.order.service.web.model.OrderStatus;
+import guru.sfg.beer.order.service.domain.OrderStatus;
+import guru.sfg.brewery.model.BeerOrderDto;
+import guru.sfg.brewery.model.BeerOrderLineDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class TestBeerOrderDto
                     UUID.randomUUID(),
                     UUID.randomUUID().toString(),
                     new ArrayList<>(),
-                    OrderStatus.NEW,
+                    OrderStatus.NEW.name(),
                     "callback-url"
         );
     }
@@ -27,7 +27,7 @@ public class TestBeerOrderDto
     public static BeerOrderDto getBeerOrderDto(UUID customerId,
                                                String customerRef,
                                                List<BeerOrderLineDto> beerOrderLines,
-                                               OrderStatus orderStatus,
+                                               String orderStatus,
                                                String orderStatusCallbackUrl)
     {
         return BeerOrderDto.builder()
