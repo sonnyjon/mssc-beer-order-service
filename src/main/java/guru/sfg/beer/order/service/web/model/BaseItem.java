@@ -31,7 +31,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseItem {
+public class BaseItem
+{
     @JsonProperty("id")
     private UUID id = null;
 

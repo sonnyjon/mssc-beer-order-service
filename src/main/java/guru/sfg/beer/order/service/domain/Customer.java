@@ -37,6 +37,14 @@ import java.util.UUID;
 @Entity
 public class Customer extends BaseEntity
 {
+    private String customerName;
+
+    @Column(length = 36, columnDefinition = "varchar")
+    private UUID apiKey;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<BeerOrder> beerOrders;
+
     @Builder
     public Customer(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, String customerName,
                     UUID apiKey, Set<BeerOrder> beerOrders)
@@ -46,13 +54,4 @@ public class Customer extends BaseEntity
         this.apiKey = apiKey;
         this.beerOrders = beerOrders;
     }
-
-    private String customerName;
-
-    @Column(length = 36, columnDefinition = "varchar")
-    private UUID apiKey;
-
-    @OneToMany(mappedBy = "customer")
-    private Set<BeerOrder> beerOrders;
-
 }

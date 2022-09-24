@@ -18,12 +18,14 @@
 package guru.sfg.beer.order.service.web.mappers;
 
 import guru.sfg.beer.order.service.domain.BeerOrder;
-import guru.sfg.beer.order.service.web.model.BeerOrderDto;
+import guru.sfg.beer.order.service.web.dto.BeerOrderDto;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-@Mapper(uses = {DateMapper.class, BeerOrderLineMapperImpl.class})
+@Mapper(uses = {DateMapper.class})
 public interface BeerOrderMapper
 {
+    @Mapping(target = "customerId", source = "customer.id")
     BeerOrderDto toBeerOrderDto(BeerOrder beerOrder);
 
     BeerOrder toBeerOrder(BeerOrderDto dto);

@@ -15,8 +15,27 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package guru.sfg.beer.order.service.web.model;
+package guru.sfg.beer.order.service.web.dto;
 
-public enum OrderStatusEnum {
-    NEW, READY, PICKED_UP
+import guru.sfg.beer.order.service.web.model.BaseItem;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.util.UUID;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class BeerOrderLineDto extends BaseItem
+{
+    private String upc;
+    private String beerName;
+    private String beerStyle;
+    private UUID beerId;
+    private Integer orderQuantity = 0;
+    private BigDecimal price;
 }

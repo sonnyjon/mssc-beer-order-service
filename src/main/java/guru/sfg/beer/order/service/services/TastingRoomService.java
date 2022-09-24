@@ -4,8 +4,8 @@ import guru.sfg.beer.order.service.bootstrap.BeerOrderBootStrap;
 import guru.sfg.beer.order.service.domain.Customer;
 import guru.sfg.beer.order.service.repositories.BeerOrderRepository;
 import guru.sfg.beer.order.service.repositories.CustomerRepository;
-import guru.sfg.beer.order.service.web.model.BeerOrderDto;
-import guru.sfg.beer.order.service.web.model.BeerOrderLineDto;
+import guru.sfg.beer.order.service.web.dto.BeerOrderDto;
+import guru.sfg.beer.order.service.web.dto.BeerOrderLineDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -18,15 +18,16 @@ import java.util.UUID;
 
 @Service
 @Slf4j
-public class TastingRoomService {
-
+public class TastingRoomService
+{
     private final CustomerRepository customerRepository;
     private final BeerOrderService beerOrderService;
     private final BeerOrderRepository beerOrderRepository;
     private final List<String> beerUpcs = new ArrayList<>(3);
 
     public TastingRoomService(CustomerRepository customerRepository, BeerOrderService beerOrderService,
-                              BeerOrderRepository beerOrderRepository) {
+                              BeerOrderRepository beerOrderRepository)
+    {
         this.customerRepository = customerRepository;
         this.beerOrderService = beerOrderService;
         this.beerOrderRepository = beerOrderRepository;
@@ -38,8 +39,8 @@ public class TastingRoomService {
 
     @Transactional
     @Scheduled(fixedRate = 2000) //run every 2 seconds
-    public void placeTastingRoomOrder(){
-
+    public void placeTastingRoomOrder()
+    {
         List<Customer> customerList = customerRepository.findAllByCustomerNameLike(BeerOrderBootStrap.TASTING_ROOM);
 
         if (customerList.size() == 1){ //should be just one
@@ -49,7 +50,8 @@ public class TastingRoomService {
         }
     }
 
-    private void doPlaceOrder(Customer customer) {
+    private void doPlaceOrder(Customer customer)
+    {
         String beerToOrder = getRandomBeerUpc();
 
         BeerOrderLineDto beerOrderLine = BeerOrderLineDto.builder()

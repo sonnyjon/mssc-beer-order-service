@@ -15,8 +15,10 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package guru.sfg.beer.order.service.web.model;
+package guru.sfg.beer.order.service.web.dto;
 
+import guru.sfg.beer.order.service.web.model.BaseItem;
+import guru.sfg.beer.order.service.web.model.OrderStatus;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,14 +34,22 @@ public class BeerOrderDto extends BaseItem
     private UUID customerId;
     private String customerRef;
     private List<BeerOrderLineDto> beerOrderLines;
-    private OrderStatusEnum orderStatus;
+    private OrderStatus orderStatus;
     private String orderStatusCallbackUrl;
 
     public BeerOrderDto() {}
 
     @Builder
-    public BeerOrderDto(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate, UUID customerId, List<BeerOrderLineDto> beerOrderLines,
-                        OrderStatusEnum orderStatus, String orderStatusCallbackUrl, String customerRef) {
+    public BeerOrderDto(UUID id,
+                        Integer version,
+                        OffsetDateTime createdDate,
+                        OffsetDateTime lastModifiedDate,
+                        UUID customerId,
+                        List<BeerOrderLineDto> beerOrderLines,
+                        OrderStatus orderStatus,
+                        String orderStatusCallbackUrl,
+                        String customerRef)
+    {
         super(id, version, createdDate, lastModifiedDate);
         this.customerId = customerId;
         this.beerOrderLines = beerOrderLines;

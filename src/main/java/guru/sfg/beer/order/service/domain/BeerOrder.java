@@ -48,14 +48,20 @@ public class BeerOrder extends BaseEntity
     @Fetch(FetchMode.JOIN)
     private Set<BeerOrderLine> beerOrderLines = new HashSet<>();
 
-    private OrderStatusEnum orderStatus = OrderStatusEnum.NEW;
+    private OrderStatus orderStatus = OrderStatus.NEW;
     private String orderStatusCallbackUrl;
 
     public BeerOrder() {}
 
     @Builder
-    public BeerOrder(UUID id, Long version, Timestamp createdDate, Timestamp lastModifiedDate, String customerRef, Customer customer,
-                     Set<BeerOrderLine> beerOrderLines, OrderStatusEnum orderStatus,
+    public BeerOrder(UUID id,
+                     Long version,
+                     Timestamp createdDate,
+                     Timestamp lastModifiedDate,
+                     String customerRef,
+                     Customer customer,
+                     Set<BeerOrderLine> beerOrderLines,
+                     OrderStatus orderStatus,
                      String orderStatusCallbackUrl)
     {
         super(id, version, createdDate, lastModifiedDate);

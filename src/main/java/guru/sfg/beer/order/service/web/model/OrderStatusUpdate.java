@@ -28,7 +28,11 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class OrderStatusUpdate extends BaseItem {
+public class OrderStatusUpdate extends BaseItem
+{
+    private UUID orderId;
+    private String customerRef;
+    private String orderStatus;
 
     @Builder
     public OrderStatusUpdate(UUID id, Integer version, OffsetDateTime createdDate, OffsetDateTime lastModifiedDate,
@@ -38,8 +42,4 @@ public class OrderStatusUpdate extends BaseItem {
         this.orderStatus = orderStatus;
         this.customerRef = customerRef;
     }
-
-    private UUID orderId;
-    private String customerRef;
-    private String orderStatus;
 }
