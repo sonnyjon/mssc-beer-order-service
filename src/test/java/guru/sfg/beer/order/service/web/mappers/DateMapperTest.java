@@ -27,7 +27,7 @@ class DateMapperTest
 
     @Nested
     @DisplayName("asOffsetDateTime() Method")
-    class ToOffsetDateTime
+    class ToOffsetDateTimeTest
     {
         @Test
         @DisplayName("should convert Timestamp and return as OffsetDateTime")
@@ -61,7 +61,7 @@ class DateMapperTest
 
     @Nested
     @DisplayName("asTimestamp() Method")
-    class ToTimestamp
+    class ToTimestampTest
     {
         @Test
         @DisplayName("should convert OffsetDateTime and return as Timestamp")

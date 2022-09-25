@@ -19,7 +19,13 @@ public class TestCustomer
 
     public static Customer getCustomer(String customerName, UUID apiKey, Set<BeerOrder> beerOrders)
     {
+        return getCustomer(UUID.randomUUID(), customerName, apiKey, beerOrders);
+    }
+
+    public static Customer getCustomer(UUID customerId, String customerName, UUID apiKey, Set<BeerOrder> beerOrders)
+    {
         return Customer.builder()
+                .id( customerId )
                 .customerName( customerName )
                 .apiKey( apiKey )
                 .beerOrders( beerOrders )

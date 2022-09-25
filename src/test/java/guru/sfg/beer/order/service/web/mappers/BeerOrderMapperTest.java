@@ -26,7 +26,7 @@ class BeerOrderMapperTest
 
     @Nested
     @DisplayName("toBeerOrderDto() Method")
-    class toDto
+    class ToDtoTest
     {
         @Test
         @DisplayName("should convert BeerOrder and return as BeerOrderDto")
@@ -60,7 +60,7 @@ class BeerOrderMapperTest
 
     @Nested
     @DisplayName("toBeerOrder() Method")
-    class toEntity
+    class ToEntityTest
     {
         @Test
         @DisplayName("should convert BeerOrderDto and return as BeerOrder")

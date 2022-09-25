@@ -119,10 +119,7 @@ public class BeerOrderServiceImpl implements BeerOrderService
         BeerOrder beerOrder = beerOrderRepository.findById( orderId ).orElseThrow( NotFoundException::new );
 
         // fall to exception if customer id's do not match - order not for customer
-        if (beerOrder.getCustomer().getId().equals( customer.getId() ))
-        {
-            return beerOrder;
-        }
+        if (beerOrder.getCustomer().getId().equals( customer.getId() )) return beerOrder;
         else throw new IllegalStateException("Customer ID does not match the order's customer ID");
     }
 }
