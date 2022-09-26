@@ -27,8 +27,8 @@ public class BeerDto
 
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime lastModifiedDate = null;
-    private String beerName;
-    private String beerStyle;
+    private String name;
+    private String style;
     private String upc;
     private Integer quantityOnHand;
 

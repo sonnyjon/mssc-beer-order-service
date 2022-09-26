@@ -30,13 +30,13 @@ public class BeerServiceImpl implements BeerService
     @Override
     public Optional<BeerDto> getBeerById(UUID uuid)
     {
-        return Optional.of(restTemplate.getForObject(beerServiceHost + BEER_PATH_V1 + uuid.toString(), BeerDto.class));
+        return Optional.ofNullable(restTemplate.getForObject(beerServiceHost + BEER_PATH_V1 + uuid, BeerDto.class));
     }
 
     @Override
     public Optional<BeerDto> getBeerByUpc(String upc)
     {
-        return Optional.of(restTemplate.getForObject(beerServiceHost + BEER_UPC_PATH_V1 + upc, BeerDto.class));
+        return Optional.ofNullable(restTemplate.getForObject(beerServiceHost + BEER_UPC_PATH_V1 + upc, BeerDto.class));
     }
 
     public void setBeerServiceHost(String beerServiceHost)
