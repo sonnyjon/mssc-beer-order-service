@@ -20,6 +20,7 @@ package guru.sfg.beer.order.service.services;
 import guru.sfg.beer.order.service.domain.BeerOrder;
 import guru.sfg.beer.order.service.domain.Customer;
 import guru.sfg.beer.order.service.domain.OrderStatus;
+import guru.sfg.beer.order.service.exceptions.ArgumentMismatchException;
 import guru.sfg.beer.order.service.exceptions.NotFoundException;
 import guru.sfg.beer.order.service.repositories.BeerOrderRepository;
 import guru.sfg.beer.order.service.repositories.CustomerRepository;
@@ -120,6 +121,6 @@ public class BeerOrderServiceImpl implements BeerOrderService
 
         // fall to exception if customer id's do not match - order not for customer
         if (beerOrder.getCustomer().getId().equals( customer.getId() )) return beerOrder;
-        else throw new IllegalStateException("Customer ID does not match the order's customer ID");
+        else throw new ArgumentMismatchException("Customer ID does not match the order's customer ID");
     }
 }

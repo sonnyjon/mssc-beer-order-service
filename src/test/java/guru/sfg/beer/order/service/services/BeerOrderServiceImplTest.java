@@ -6,6 +6,7 @@ import guru.sfg.beer.order.service.cases.TestCustomer;
 import guru.sfg.beer.order.service.domain.BeerOrder;
 import guru.sfg.beer.order.service.domain.Customer;
 import guru.sfg.beer.order.service.domain.OrderStatus;
+import guru.sfg.beer.order.service.exceptions.ArgumentMismatchException;
 import guru.sfg.beer.order.service.exceptions.NotFoundException;
 import guru.sfg.beer.order.service.repositories.BeerOrderRepository;
 import guru.sfg.beer.order.service.repositories.CustomerRepository;
@@ -246,8 +247,8 @@ class BeerOrderServiceImplTest
         }
 
         @Test
-        @DisplayName("should throw IllegalStateException: Customer ID doesn't match one from BeerOrder")
-        void givenNonMatching_customerAndOrderIds_whenGetOrderById_thenIllegalStateException()
+        @DisplayName("should throw ArgumentMismatchException: Customer ID doesn't match one from BeerOrder")
+        void givenNonMatching_customerAndOrderIds_whenGetOrderById_thenArgumentMismatchException()
         {
             // given
             final Customer customer = TestCustomer.getCustomer();
@@ -262,7 +263,7 @@ class BeerOrderServiceImplTest
             Executable executable = () -> beerOrderService.getOrderById( customerId, orderId );
 
             // then
-            assertThrows( IllegalStateException.class, executable );
+            assertThrows( ArgumentMismatchException.class, executable );
             verify(customerRepository, times(1)).findById(any( UUID.class ));
             verify(beerOrderRepository, times(1)).findById(any( UUID.class ));
         }
@@ -339,7 +340,7 @@ class BeerOrderServiceImplTest
         }
 
         @Test
-        @DisplayName("should throw IllegalStateException: Customer ID doesn't match one from BeerOrder")
+        @DisplayName("should throw ArgumentMismatchException: Customer ID doesn't match one from BeerOrder")
         void givenNonMatching_customerAndOrderIds_whenPickupOrder_thenIllegalStateException()
         {
             // given
@@ -355,7 +356,7 @@ class BeerOrderServiceImplTest
             Executable executable = () -> beerOrderService.pickupOrder( customerId, orderId );
 
             // then
-            assertThrows( IllegalStateException.class, executable );
+            assertThrows( ArgumentMismatchException.class, executable );
             verify(customerRepository, times(1)).findById(any( UUID.class ));
             verify(beerOrderRepository, times(1)).findById(any( UUID.class ));
         }
